@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congrats on 2nd Insta!</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        img {
+            width: 50%;
+            max-width: 400px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        p {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .meme-text {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 30px;
+            background: yellow;
+            color: black;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #ffcc00;
+            color: black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body onclick="startAudio()">
+    <h1>🎉 Congrats @omageiger! 🎉</h1>
+    <div class="container">
+        <p id="text">Your 2nd Instagram account is now ONE WEEK OLD! Wow, what an achievement! 🎊</p>
+        <p class="meme-text" id="meme-text">"Two accounts, double the chaos!"</p>
+        
+        <img id="meme-img" src="1740404595045.png" alt="Meme Image">
+        
+        <br>
+        <button onclick="nextMeme()">Next Meme ➡️</button>
+        
+        <p id="footer-text">May your second account be as legendary as the first one. Or at least get hacked less. 😆</p>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="happy happy happy.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let audioStarted = false;
+        function startAudio() {
+            if (!audioStarted) {
+                document.getElementById("bg-music").play();
+                audioStarted = true;
+            }
+        }
+
+        let memes = [
+            { img: "1740404595045.png", text: '"Two accounts, double the chaos!"' },
+            { img: "1740404569338.png", text: '"Instagram’s servers are shaking!"' },
+            { img: "1740404533851.png", text: '"One more account and you’ll need an assistant!"' },
+            { img: "Disaster_Girl.jpg", text: '"This is how it all starts..."' }
+        ];
+
+        let currentIndex = 0;
+
+        function nextMeme() {
+            currentIndex = (currentIndex + 1) % memes.length;
+            document.getElementById("meme-img").src = memes[currentIndex].img;
+            document.getElementById("meme-text").textContent = memes[currentIndex].text;
+        }
+    </script>
+</body>
+</html>
